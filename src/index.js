@@ -10,7 +10,7 @@ import theme from './plugins/mui.plugin'
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/goods-delivery/">
+    <BrowserRouter basename="/phone-store/">
       <ThemeProvider theme={theme}>
         <App />
       </ThemeProvider>
