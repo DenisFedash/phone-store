@@ -1,8 +1,16 @@
+import { CardMedia } from '@mui/material'
+
 export const Cart = ({ title, img, price }) => {
   return (
     <>
-      <h3>{title}</h3>
-      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <CardMedia
+        component="img"
+        image={img}
+        alt={title}
+        sx={{ maxWidth: 448 }}
+      />
+      <p>{price}</p>
     </>
   )
 }
