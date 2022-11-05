@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import { CartList } from '../../components/CartList/CartList'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { Container } from '@mui/system'
+import { Button } from '@mui/material'
 
 export const CartPage = () => {
   const location = useLocation()
@@ -8,9 +10,12 @@ export const CartPage = () => {
   const onGoBack = () => navigate(location?.state?.from ?? '/')
   return (
     <>
-      <button onClick={onGoBack}>Back</button>
-
-      <CartList />
+      <Container>
+        <Button variant="contained" onClick={onGoBack}>
+          To Store
+        </Button>
+        <CartList />
+      </Container>
     </>
   )
 }

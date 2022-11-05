@@ -10,8 +10,8 @@ import MenuItem from '@mui/material/MenuItem'
 import SmartphoneIcon from '@mui/icons-material/Smartphone'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import { useState } from 'react'
-import { LinkNav, NavItem } from './Header.styled'
-import { Link, NavLink } from 'react-router-dom'
+import { LinkNav, NavMobile } from './Header.styled'
+import { Link } from 'react-router-dom'
 
 const pages = ['Products', 'Favorites', 'About']
 
@@ -44,24 +44,24 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
             />
           </Link>
-          <Link to="/">
-            <Typography
-              variant="h6"
-              noWrap
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
 
-                textDecoration: 'none',
-              }}
-              color="text"
-            >
-              Phone Store
-            </Typography>
-          </Link>
+          <Typography
+            variant="h6"
+            noWrap
+            sx={{
+              mr: 2,
+              display: { xs: 'none', md: 'flex' },
+              fontFamily: 'monospace',
+              fontWeight: 700,
+              letterSpacing: '.3rem',
+
+              textDecoration: 'none',
+            }}
+            color="text"
+          >
+            <Link to="/">Phone Store</Link>
+          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -91,21 +91,27 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center" color="text">
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
+              <MenuItem>
+                <Typography textAlign="center" color="text">
+                  <NavMobile to="/phones">Products</NavMobile>
+                </Typography>
+              </MenuItem>
+              <MenuItem>
+                <Typography textAlign="center" color="text">
+                  <NavMobile to="favorites">Favorites</NavMobile>
+                </Typography>
+              </MenuItem>
+              <MenuItem>
+                <Typography textAlign="center" color="text">
+                  <NavMobile to="about">About</NavMobile>
+                </Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <SmartphoneIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
-            component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -118,7 +124,7 @@ function ResponsiveAppBar() {
             }}
             color="text"
           >
-            Phone Store
+            <Link to="/">Phone Store</Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             <LinkNav to="/phones">Products</LinkNav>

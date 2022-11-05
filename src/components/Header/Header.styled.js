@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 export const NavItem = styled.li`
   position: relative;
@@ -8,6 +8,7 @@ export const NavItem = styled.li`
 export const LinkNav = styled(NavLink)`
   color: white;
   transition: white;
+  text-transform: uppercase;
   text-decoration: none;
   &.active {
     text-decoration: underline;
@@ -20,5 +21,15 @@ export const LinkNav = styled(NavLink)`
 
   :not(:last-child) {
     margin-right: 15px;
+  }
+`
+
+export const NavMobile = styled(Link)`
+  text-transform: uppercase;
+  text-decoration: none;
+
+  :hover,
+  :focus {
+    color: blue;
   }
 `

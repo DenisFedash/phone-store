@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { ProductCard } from '../ProductCard/ProductCard'
 import { FlexList } from './Content.styled'
 import { storePhones } from '../../service/data'
-import { useLocation } from 'react-router-dom'
 
 export const Content = () => {
   const [products, setProducts] = useState([])
@@ -10,8 +9,7 @@ export const Content = () => {
     let cartItems = localStorage.getItem('cartItems')
     return cartItems ? JSON.parse(cartItems) : []
   })
-  const [cartShow, setCartShow] = useState(false)
-  const [showAlert, setShowAlert] = useState(null)
+
   useEffect(() => {
     const productsArray = []
     storePhones.map(({ id, title, img, price, count }) => {
@@ -46,14 +44,10 @@ export const Content = () => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems))
   }, [cartItems])
 
-  //   const removeFromCart = (id) => {
-  //     const newCart = products.filter((item) => item.id !== id)
-  //     setCartItems(newCart)
-  //   }
-
-  //   const toggleShow = () => setCartShow(!cartShow)
-
-  //   const hideAlert = () => setShowAlert(null)
+  // const removeFromCart = (id) => {
+  //   const newCart = products.filter((item) => item.id !== id)
+  //   setCartItems(newCart)
+  // }
 
   return (
     <>
