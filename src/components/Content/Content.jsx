@@ -6,7 +6,10 @@ import { useLocation } from 'react-router-dom'
 
 export const Content = () => {
   const [products, setProducts] = useState([])
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(() => {
+    let cartItems = localStorage.getItem('cartItems')
+    return cartItems ? JSON.parse(cartItems) : []
+  })
   const [cartShow, setCartShow] = useState(false)
   const [showAlert, setShowAlert] = useState(null)
   useEffect(() => {
@@ -37,12 +40,11 @@ export const Content = () => {
       newCart.push(itemInCart)
     }
     setCartItems(newCart)
-    localStorage.setItem('cartItems', JSON.stringify(cartItems))
   }
 
-  //   useEffect(() => {
-
-  //   }, [cartItems])
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems))
+  }, [cartItems])
 
   //   const removeFromCart = (id) => {
   //     const newCart = products.filter((item) => item.id !== id)

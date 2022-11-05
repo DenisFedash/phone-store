@@ -1,4 +1,3 @@
-import * as React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -7,17 +6,18 @@ import Typography from '@mui/material/Typography'
 import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
-
-import Button from '@mui/material/Button'
 import MenuItem from '@mui/material/MenuItem'
-import AdbIcon from '@mui/icons-material/Adb'
-import { Link } from 'react-router-dom'
+import SmartphoneIcon from '@mui/icons-material/Smartphone'
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
+import { useState } from 'react'
+import { LinkNav, NavItem } from './Header.styled'
+import { Link, NavLink } from 'react-router-dom'
 
 const pages = ['Products', 'Favorites', 'About']
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null)
-  const [anchorElUser, setAnchorElUser] = React.useState(null)
+  const [anchorElNav, setAnchorElNav] = useState(null)
+  const [anchorElUser, setAnchorElUser] = useState(null)
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
@@ -39,26 +39,29 @@ function ResponsiveAppBar() {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+          <Link to="/">
+            <SmartphoneIcon
+              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+            />
+          </Link>
+          <Link to="/">
+            <Typography
+              variant="h6"
+              noWrap
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'monospace',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
 
-              textDecoration: 'none',
-            }}
-            color="text"
-          >
-            LOGO
-          </Typography>
-
+                textDecoration: 'none',
+              }}
+              color="text"
+            >
+              Phone Store
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
@@ -97,7 +100,7 @@ function ResponsiveAppBar() {
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <SmartphoneIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -115,18 +118,14 @@ function ResponsiveAppBar() {
             }}
             color="text"
           >
-            LOGO
+            Phone Store
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            <LinkNav to="/phones">Products</LinkNav>
+
+            <LinkNav to="favorites">Favorites</LinkNav>
+
+            <LinkNav to="about">About</LinkNav>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -147,10 +146,12 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             ></Menu>
           </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Link to="/cart">
+              <ShoppingCartOutlinedIcon />
+            </Link>
+          </Box>
         </Toolbar>
-        <Link to="/cart">
-          <button>Cart</button>
-        </Link>
       </Container>
     </AppBar>
   )

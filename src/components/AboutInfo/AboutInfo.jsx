@@ -28,3 +28,13 @@
 //         </main>
 //     );
 // }
+export const AboutInfo = () => {
+  return (
+    <p>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Excepturi
+      voluptas sunt, impedit hic rem repellat animi quam eos quo ducimus
+      laudantium aliquid sed harum reprehenderit asperiores quisquam odit
+      nostrum delectus.
+    </p>
+  )
+}

@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Cart } from '../Cart/Cart'
 
 export const CartList = () => {
-  const [phones] = useState(JSON.parse(localStorage.getItem('cartItems')))
+  const phones = JSON.parse(localStorage.getItem('cartItems')) || []
   const cost = phones.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   return phones.length ? (
