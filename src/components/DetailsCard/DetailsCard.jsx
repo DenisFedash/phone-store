@@ -1,10 +1,10 @@
-import Table from '@mui/material/Table'
-import TableBody from '@mui/material/TableBody'
-import TableCell from '@mui/material/TableCell'
-import TableContainer from '@mui/material/TableContainer'
-import TableRow from '@mui/material/TableRow'
-import Paper from '@mui/material/Paper'
-import { Button, CardContent, CardMedia, Stack } from '@mui/material'
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { Button, CardContent, CardMedia, Stack } from "@mui/material";
 import {
   Image,
   LinkButton,
@@ -14,10 +14,11 @@ import {
   Text,
   Title,
   TitleSpec,
-} from './DetailsCard.styled'
+} from "./DetailsCard.styled";
 
 export const DetailsCard = ({ phoneDetails }) => {
-  const { id, title, img, price, company, info, specs } = phoneDetails
+  const { title, img, price, company, info, specs } = phoneDetails;
+
   return (
     <>
       <Title>{title}</Title>
@@ -165,5 +166,5 @@ export const DetailsCard = ({ phoneDetails }) => {
         </TableContainer>
       </CardContent>
     </>
-  )
-}
+  );
+};

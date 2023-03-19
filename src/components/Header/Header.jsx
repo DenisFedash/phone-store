@@ -1,47 +1,46 @@
-import AppBar from '@mui/material/AppBar'
-import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
-import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
-import MenuIcon from '@mui/icons-material/Menu'
-import Container from '@mui/material/Container'
-import MenuItem from '@mui/material/MenuItem'
-import SmartphoneIcon from '@mui/icons-material/Smartphone'
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
-import { useState } from 'react'
-import { LinkNav, NavMobile } from './Header.styled'
-import { Link } from 'react-router-dom'
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import MenuItem from "@mui/material/MenuItem";
+import SmartphoneIcon from "@mui/icons-material/Smartphone";
+import { useEffect, useState } from "react";
+import { LinkNav, NavMobile } from "./Header.styled";
+import { Link } from "react-router-dom";
+import { ShopIcon } from "../ShopIcon/ShopIcon";
 
-const pages = ['Products', 'Favorites', 'About']
-
-function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null)
-  const [anchorElUser, setAnchorElUser] = useState(null)
+export const Header = () => {
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [goods, setGoods] = useState([]);
 
   const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget)
-  }
+    setAnchorElNav(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
+    setAnchorElNav(null);
+  };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null)
-  }
+    setAnchorElUser(null);
+  };
 
   return (
     <AppBar
       position="static"
-      style={{ marginBottom: '98px' }}
+      style={{ marginBottom: "98px" }}
       color="secondary"
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Link to="/">
             <SmartphoneIcon
-              sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}
+              sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
             />
           </Link>
 
@@ -50,19 +49,19 @@ function ResponsiveAppBar() {
             noWrap
             sx={{
               mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
+              display: { xs: "none", md: "flex" },
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
+              letterSpacing: ".3rem",
 
-              textDecoration: 'none',
+              textDecoration: "none",
             }}
             color="text"
           >
             <Link to="/">Phone Store</Link>
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -77,18 +76,18 @@ function ResponsiveAppBar() {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               <MenuItem>
@@ -108,25 +107,25 @@ function ResponsiveAppBar() {
               </MenuItem>
             </Menu>
           </Box>
-          <SmartphoneIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          <SmartphoneIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
             sx={{
               mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'text',
-              textDecoration: 'none',
+              letterSpacing: ".3rem",
+              color: "text",
+              textDecoration: "none",
             }}
             color="text"
           >
             <Link to="/">Phone Store</Link>
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <LinkNav to="/phones">Products</LinkNav>
 
             <LinkNav to="favorites">Favorites</LinkNav>
@@ -136,17 +135,17 @@ function ResponsiveAppBar() {
 
           <Box sx={{ flexGrow: 0 }}>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
@@ -154,12 +153,11 @@ function ResponsiveAppBar() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <Link to="/cart">
-              <ShoppingCartOutlinedIcon />
+              <ShopIcon goods={goods} />
             </Link>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-  )
-}
-export default ResponsiveAppBar
+  );
+};
